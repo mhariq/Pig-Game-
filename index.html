@@ -10,7 +10,7 @@
   <body>
     <main>
       <section class="player player--0 player--active">
-        <h2 class="name" id="name--0">Player 1</h2>
+        <input class="name" id="name--0" placeholder ="ENTER NAME">Player 1</input>
         <p class="score" id="score--0">43</p>
         <div class="current">
           <p class="current-label">Current</p>
@@ -18,7 +18,7 @@
         </div>
       </section>
       <section class="player player--1">
-        <h2 class="name" id="name--1">Player 2</h2>
+        <input class="name" id="name--1" placeholder ="ENTER NAME">Player 2</input>
         <p class="score" id="score--1">24</p>
         <div class="current">
           <p class="current-label">Current</p>
@@ -28,8 +28,20 @@
 
       <img src="dice-5.png" alt="Playing dice" class="dice" />
       <button class="btn btn--new">🔄 New game</button>
+      <button class="btn btn--rules">🧾 Rules</button>
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
+      <p class="modal hidden">
+        Choose a player to go first. That player throws a die and scores as many
+        points as the total shown on the die providing the die does not roll a
+        1. The player may continue rolling and accumulating points (but risk
+        rolling a 1) or end his turn. If the player rolls a 1 his turn is over,
+        he loses all points he accumulated that turn, and he passes the die to
+        the next player. Play passes from player to player until a winner is
+        determined. How do you win? The first player to accumulate 25 or more
+        points wins the game.
+      </p>
+      <div class="overlay hidden"></div>
     </main>
     <script src="script.js"></script>
   </body>

@@ -12,11 +12,17 @@ const diceEl = document.querySelector('.dice');
 const btnRoll = document.querySelector('.btn--roll');
 const btnNew = document.querySelector('.btn--new');
 const btnHold = document.querySelector('.btn--hold');
+const btnRules = document.querySelector('.btn--rules');
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
 
 let scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 let playing = true;
+let p1, p2;
+
+//Initalize
 
 const init = function () {
   score0El.textContent = 0;
@@ -28,11 +34,14 @@ const init = function () {
   player1El.classList.remove('player--winner');
   player1El.classList.remove('player--active');
   player0El.classList.add('player--active');
+  document.querySelector('#name--1').value = '';
+  document.querySelector('#name--0').value = '';
 
   scores = [0, 0];
   currentScore = 0;
   activePlayer = 0;
   playing = true;
+  // playerName();
 };
 
 init();
@@ -77,7 +86,7 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer];
 
     //if score >= 100 announce winner
-    if (scores[activePlayer] >= 15) {
+    if (scores[activePlayer] >= 10) {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
@@ -93,3 +102,16 @@ btnHold.addEventListener('click', function () {
 });
 
 btnNew.addEventListener('click', init);
+
+//Modal script
+
+const toggleModal = function () {
+  modal.classList.toggle('hidden');
+  overlay.classList.toggle('hidden');
+};
+
+btnRules.addEventListener('click', toggleModal);
+overlay.addEventListener('click', toggleModal);
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) toggleModal();
+});
